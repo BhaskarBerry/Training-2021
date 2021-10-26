@@ -45,7 +45,7 @@ Insert Into Trades Values
 (10,6,'3000',2,'completed'),
 (11,3,'2000',1,'cancelled')
 */
-
+--------------------------------------------------------------
 Select * From Trades  order by User_id
 Select * From Users order by city 
 
@@ -55,4 +55,6 @@ Inner Join Trades T ON U.user_id = T.user_id
 Where [Status]='completed'
 group by U.city
 order by count(T.User_id) DESC
+
+--------------------------------------------------------------
 
