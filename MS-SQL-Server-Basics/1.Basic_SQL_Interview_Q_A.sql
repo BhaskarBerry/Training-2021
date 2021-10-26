@@ -7,22 +7,21 @@ Go
 
 /*
 1.Assume you are given the below tables for trades and users. Write a query to list the top 3 cities which had the highest number of completed orders.
-*/
-Create Table Users
-(
-[User_id] int Primary key,
-city Nvarchar(70),
-Email nvarchar(70),
-signup_date Datetime
+
+Create Table Users (
+	[User_id] int Primary key,
+	city Nvarchar(70),
+	Email nvarchar(70),
+	signup_date Datetime
 )
 
 Create Table Trades(
-Order_id Int Primary key,
-[User_id] Int,
-Price float,
-Quantity Int,
-[Status] nvarchar(60),
-Foreign key([User_id]) References  Users([User_id])
+	Order_id Int Primary key,
+	[User_id] Int,
+	Price float,
+	Quantity Int,
+	[Status] nvarchar(60),
+	Foreign key([User_id]) References  Users([User_id])
 )
 
 Insert Into Users Values
@@ -45,11 +44,12 @@ Insert Into Trades Values
 (9,1,'2000',4,'completed'),
 (10,6,'3000',2,'completed'),
 (11,3,'2000',1,'cancelled')
+*/
 
 Select * From Trades  order by User_id
 Select * From Users order by city 
 
-Select Top 5 U.city, count(T.User_id) as No_of_orders
+Select Top 3 U.city, count(T.User_id) as No_of_orders
 From Users U
 Inner Join Trades T ON U.user_id = T.user_id
 Where [Status]='completed'
